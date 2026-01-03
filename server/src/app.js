@@ -2,30 +2,46 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const produtoRoutes = require('./routes/produtoRoutes');
-
-console.log("Iniciando o servidor...");
+const Produto = require('./models/Produto'); 
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-const MONGO_URI = process.env.MONGO_URI; 
-
-console.log("Tentando conectar ao banco...");
-
-mongoose.connect(MONGO_URI)
-  .then(() => console.log('Conectado ao MongoDB Atlas com sucesso!'))
-  .catch((err) => console.error('Erro ao conectar no MongoDB:', err));
-
-app.use('/api/produtos', produtoRoutes);
-
 app.get('/', (req, res) => {
-  res.send('API RSKBuys rodando!');
+  res.send('Servidor RSKBuys funcionando!');
 });
 
-const PORT = process.env.PORT || 3000;
+app.get('/api/produtos', async (req, res) => {
+  try {
+    const produtos = await Produto.find();
+    res.json(produtos);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar" });
+  }
+});
+
+app.post('/api/produtos', async (req, res) => {
+  console.log("Recebi um pedido de cadastro!", req.body);
+
+  try {
+    const novoProduto = req.body;
+    const produtoCriado = await Produto.create(novoProduto);
+    console.log("Produto criado no banco:", produtoCriado._id);
+    res.status(201).json(produtoCriado);
+  } catch (error) {
+    console.error("Erro ao salvar:", error);
+    res.status(500).json({ error: "Erro ao cadastrar" });
+  }
+});
+
+// --- CONEXÃO E START ---
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('Conectado ao MongoDB!'))
+  .catch((err) => console.error('Erro no Mongo:', err));
+
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
