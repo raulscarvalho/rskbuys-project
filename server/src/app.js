@@ -13,12 +13,36 @@ app.get('/', (req, res) => {
   res.send('Servidor RSKBuys funcionando!');
 });
 
+app.post('/api/auth/login', (req, res) => {
+  const { senha } = req.body;
+  
+  if (senha === process.env.ADMIN_SECRET) {
+    res.json({ success: true });
+  } else {
+    res.status(401).json({ error: "Senha incorreta" });
+  }
+});
+
 app.get('/api/produtos', async (req, res) => {
   try {
     const produtos = await Produto.find();
     res.json(produtos);
   } catch (error) {
     res.status(500).json({ error: "Erro ao buscar" });
+  }
+});
+
+app.get('/api/produtos/:id', async (req, res) => {
+  try {
+    const produto = await Produto.findById(req.params.id);
+    
+    if (!produto) {
+      return res.status(404).json({ error: "Produto não encontrado" });
+    }
+    
+    res.json(produto);
+  } catch (error) {
+    res.status(400).json({ error: "ID inválido ou erro no servidor" });
   }
 });
 
@@ -36,7 +60,6 @@ app.post('/api/produtos', async (req, res) => {
   }
 });
 
-// --- CONEXÃO E START ---
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Conectado ao MongoDB!'))
   .catch((err) => console.error('Erro no Mongo:', err));

@@ -16,9 +16,11 @@ const ProdutoCard = ({ produto }) => {
       <div className="produto-info">
         <h3>{produto.nome}</h3>
         <p className="produto-preco">{precoFormatado}</p>
-        <Link to="#" className="btn-detalhes">
+
+        <Link to={`/produto/${produto._id}`} className="btn-detalhes">
           Ver Detalhes
         </Link>
+        
       </div>
     </div>
   );
