@@ -2,15 +2,21 @@ import { Link } from 'react-router-dom';
 import './ProdutoCard.css';
 
 const ProdutoCard = ({ produto }) => {
+  const precoFormatado = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(produto.preco);
+
   return (
     <div className="produto-card">
-      <img src={produto.imagem} alt={produto.nome} className="produto-img" />
-      
+      <div className="img-container">
+        <img src={produto.imagem} alt={produto.nome} className="produto-img" />
+      </div>
+
       <div className="produto-info">
         <h3>{produto.nome}</h3>
-        <p className="produto-preco">R$ {produto.preco.toFixed(2)}</p>
-        
-        <Link to={`/produto/${produto._id}`} className="btn-detalhes">
+        <p className="produto-preco">{precoFormatado}</p>
+        <Link to="#" className="btn-detalhes">
           Ver Detalhes
         </Link>
       </div>
