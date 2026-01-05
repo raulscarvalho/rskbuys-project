@@ -9,7 +9,7 @@
   </h1>
 
   <p>
-    E-commerce Full Stack de roupas exclusivas. 
+    E-commerce Full Stack de roupas. 
     <br />
     Projeto desenvolvido para avaliação da N2 de Programacão Web 2.
   </p>
@@ -45,8 +45,8 @@
 
 ## Funcionalidades
 
-* **Catalogo Dinâmico:** Listagem de produtos consumindo API do backend.
-* **Detalhes do Produto:** Pagina exclusiva com descrição, preçoo e foto.
+* **Catálogo Dinâmico:** Listagem de produtos consumindo API do backend.
+* **Detalhes do Produto:** Página exclusiva com descrição, preço e foto.
 * **Carrinho de Compras:** Gerenciamento de estado global via Context API.
 * **Responsividade:** Layout adaptado para Desktop e Mobile.
 
@@ -54,11 +54,11 @@
 
 ## Como Rodar o Projeto
 
-### Pre-requisitos
+### Pré-requisitos
 * Node.js instalado
 * Git instalado
 
-### 1. Clonar o repositorio
+### 1. Clonar o repositório
 
 ```bash
 git clone https://github.com/raulscarvalho/rskbuys-project.git
