@@ -46,7 +46,6 @@ const DetalhesProduto = () => {
               <ShoppingCart size={32} weight="bold" style={{marginRight: '10px'}} />
               ADICIONAR AO CARRINHO
             </button>
-            <p className="aviso-seguranca">🚚 Envio imediato para todo o Brasil</p>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <Link to="/">RSK Buys 🐉</Link>
+        <Link to="/">RSK<span className="logo-buys">Buys</span> 🐉</Link>
       </div>
       
       <ul className="navbar-links">

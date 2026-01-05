@@ -14,18 +14,21 @@
 
 .img-area-detalhe {
   background: #1a1a1a;
-  padding: 20px;
+  padding: 10px;
   border-radius: 12px;
   border: 1px solid #333;
+  height: 400px; 
+  width: 100%;
+  overflow: hidden; 
 }
 
 .img-area-detalhe img {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 8px;
   display: block;
+  object-fit: cover; 
 }
-
 
 .categoria-tag {
   background-color: var(--vermelho-china);
@@ -91,12 +94,16 @@
   margin-top: 10px;
 }
 
-/* celular */
 @media (max-width: 768px) {
   .detalhes-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  .img-area-detalhe {
+    height: 350px; 
+  }
+
   .info-area-detalhe h1 {
     font-size: 2rem;
   }
