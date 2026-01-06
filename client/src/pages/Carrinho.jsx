@@ -1,27 +1,28 @@
 import { useCart } from '../context/CartContext';
-import { Trash, WhatsappLogo, Minus, Plus } from 'phosphor-react';
-import { Link } from 'react-router-dom';
+import { Trash, WhatsappLogo, Minus, Plus, CreditCard } from 'phosphor-react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Carrinho.css';
 
 const Carrinho = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
-
-  const total = cartItems.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+  const navigate = useNavigate(); 
+  const total = cartItems.reduce((acc, item) => {
+    const valor = item.preco || item.price || 0;
+    return acc + (Number(valor) * item.quantidade);
+  }, 0);
 
   const totalFormatado = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL'
   }).format(total);
 
-  const finalizarPedido = () => {
+  const finalizarPedidoZap = () => {
     const telefone = "85920048598";
-    
     let mensagem = "*Olá! Gostaria de finalizar meu pedido no RSK Buys:*\n\n";
     cartItems.forEach(item => {
       mensagem += `- (${item.quantidade}x) ${item.nome} \n`;
     });
     mensagem += `\n*Total: ${totalFormatado}*`;
-
     const link = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
     window.open(link, '_blank');
   };
@@ -45,7 +46,8 @@ const Carrinho = () => {
                 <div className="info-item">
                   <h3>{item.nome}</h3>
                   <p className="preco-unitario">
-                    {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.preco)}
+                    {/* Exibe preco ou price */}
+                    {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.preco || item.price)}
                   </p>
                   
                   {item.categoria === 'Pronta Entrega' && (
@@ -84,10 +86,18 @@ const Carrinho = () => {
 
           <div className="resumo-pedido">
             <h3>Total: {totalFormatado}</h3>
-            <button onClick={finalizarPedido} className="btn-whatsapp">
-              <WhatsappLogo size={24} weight="bold" />
-              Finalizar no WhatsApp
-            </button>
+            
+            <div className="acoes-carrinho">
+              <button onClick={() => navigate('/checkout')} className="btn-checkout">
+                <CreditCard size={24} weight="bold" />
+                Pagar no Site
+              </button>
+
+              <button onClick={finalizarPedidoZap} className="btn-whatsapp">
+                <WhatsappLogo size={24} weight="bold" />
+                Finalizar no WhatsApp
+              </button>
+            </div>
           </div>
         </>
       )}

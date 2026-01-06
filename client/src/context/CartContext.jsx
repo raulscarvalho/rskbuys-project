@@ -1,6 +1,6 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 
-const CartContext = createContext();
+export const CartContext = createContext(); 
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(() => {
@@ -56,10 +56,15 @@ export const CartProvider = ({ children }) => {
     setCartItems((prevItems) => prevItems.filter((item) => item._id !== id));
   };
 
+  const clearCart = () => {
+    setCartItems([]); 
+    localStorage.removeItem('rsk-cart'); 
+  };
+
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantidade, 0);
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, cartCount }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart, cartCount }}>
       {children}
     </CartContext.Provider>
   );

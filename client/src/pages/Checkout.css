@@ -1,0 +1,214 @@
+/* Container Principal */
+.checkout-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    color: #e1e1e6;
+  }
+  
+  .titulo-pagina {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #fff;
+  }
+  
+  /* Layout de Grid (Esquerda e Direita) */
+  .checkout-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Esquerda maior, direita menor */
+    gap: 30px;
+  }
+  
+  /* Cards (Caixas do formulário) */
+  .card-form {
+    background-color: #202024;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #323238;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #323238;
+    padding-bottom: 15px;
+  }
+  
+  .card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #fff;
+  }
+  
+  /* Ícones Coloridos */
+  .icon-roxo { color: #8257e5; }
+  .icon-laranja { color: #fd951f; }
+  .icon-verde { color: #04d361; }
+  
+  /* Inputs Bonitos */
+  .grid-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  
+  .full-width {
+    grid-column: span 2; /* Ocupa a linha inteira */
+  }
+  
+  input {
+    background-color: #121214;
+    border: 1px solid #323238;
+    color: #fff;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  
+  input:focus {
+    border-color: #04d361;
+  }
+  
+  /* Visual Cartão de Crédito Fake */
+  .payment-preview {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cartao-falso {
+    width: 100%;
+    max-width: 300px;
+    height: 160px;
+    background: linear-gradient(135deg, #1e1e1e 0%, #333 100%);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 1px solid #444;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+  
+  .cartao-falso span {
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: #aaa;
+    letter-spacing: 2px;
+  }
+  
+  .cartao-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .cartao-bottom span {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+  
+  /* --- COLUNA DIREITA (Resumo) --- */
+  .resumo-card {
+    background-color: #29292e;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #323238;
+    color: #fff;
+  }
+  
+  /* Sticky: Faz o resumo acompanhar a rolagem */
+  .sticky {
+    position: sticky;
+    top: 20px;
+  }
+  
+  .item-resumo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #c4c4cc;
+    font-size: 0.95rem;
+  }
+  
+  .divider {
+    height: 1px;
+    background-color: #323238;
+    margin: 20px 0;
+  }
+  
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  
+  .preco-grande {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #04d361;
+  }
+  
+  /* Botão Finalizar */
+  .btn-pagar {
+    width: 100%;
+    padding: 18px;
+    background-color: #04d361;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.2s;
+  }
+  
+  .btn-pagar:hover {
+    filter: brightness(0.9);
+    transform: translateY(-2px);
+  }
+  
+  .seguranca-msg {
+    text-align: center;
+    margin-top: 15px;
+    color: #777;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  
+  /* Responsividade (Celular) */
+  @media (max-width: 768px) {
+    .checkout-grid {
+      grid-template-columns: 1fr; /* Vira uma coluna só */
+    }
+    
+    .coluna-resumo {
+      order: -1; /* Joga o resumo para cima no celular (opcional) */
+      margin-bottom: 20px;
+    }
+  
+    .grid-inputs {
+      grid-template-columns: 1fr; /* Inputs um embaixo do outro no mobile */
+    }
+  
+    .full-width {
+      grid-column: span 1;
+    }
+  }

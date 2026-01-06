@@ -7,7 +7,7 @@ const Produto = require('./models/Produto');
 const app = express();
 
 app.use(cors({
-    origin: ["https://rskbuys-project.vercel.app/", "http://localhost:5173"]
+    origin: ["https://rskbuys-project.vercel.app", "http://localhost:5173"]
 }));
 
 app.use(express.json());
@@ -60,6 +60,30 @@ app.post('/api/produtos', async (req, res) => {
   } catch (error) {
     console.error("Erro ao salvar:", error);
     res.status(500).json({ error: "Erro ao cadastrar" });
+  }
+});
+
+app.put('/api/produtos/:id', async (req, res) => {
+  try {
+    const produtoAtualizado = await Produto.findByIdAndUpdate(
+      req.params.id, 
+      req.body, 
+      { new: true }
+    );
+    if (!produtoAtualizado) return res.status(404).json({ error: "Não encontrado" });
+    res.json(produtoAtualizado);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao atualizar" });
+  }
+});
+
+app.delete('/api/produtos/:id', async (req, res) => {
+  try {
+    const produtoExcluido = await Produto.findByIdAndDelete(req.params.id);
+    if (!produtoExcluido) return res.status(404).json({ error: "Não encontrado" });
+    res.json({ message: "Excluído com sucesso" });
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao excluir" });
   }
 });
 

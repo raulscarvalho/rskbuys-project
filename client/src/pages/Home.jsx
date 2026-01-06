@@ -11,7 +11,6 @@ const Home = () => {
     async function buscarProdutos() {
       try {
         const resposta = await api.get('/produtos');
-        // FILTRO: Aqui pegamos APENAS o que é 'Destaques'
         const apenasDestaques = resposta.data.filter(p => p.categoria === 'Destaques');
         setProdutos(apenasDestaques);
         setLoading(false);

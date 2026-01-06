@@ -1,41 +1,79 @@
 :root {
   --vermelho-china: #b71c1c;
   --vermelho-escuro: #8e1414;
-  --dourado-luxo: #ffd700;
-  --cinza-fundo: #1a1a1a;
-  --cinza-input: #2a2a2a;
-  --branco-texto: #ffffff;
-  --verde-neon: #00ff88;
+  --dourado-luxo: #ffd700; /* Amarelo ouro */
+  --cinza-fundo-pag: #121214; /* Fundo da página */
+  --cinza-cartao: #202024; /* Fundo do formulário */
+  --cinza-input: #121214; /* Fundo do input */
+  --branco-texto: #e1e1e6;
+  --borda-suave: #323238;
+  --verde-neon: #04d361;
 }
 
+/* --- ESTRUTURA GERAL --- */
+.cadastro-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  min-height: 80vh;
+  font-family: 'Roboto', sans-serif;
+  color: var(--branco-texto);
+}
+
+/* Header do Painel (Título e Botão Sair) */
+.header-painel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--borda-suave);
+  padding-bottom: 1rem;
+}
+
+.header-painel h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.btn-sair {
+  background: transparent;
+  border: 1px solid var(--vermelho-china);
+  color: var(--vermelho-china);
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-sair:hover {
+  background: var(--vermelho-china);
+  color: white;
+}
+
+/* --- LOGIN (Tela de Entrada) --- */
 .login-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 70vh;
+  min-height: 80vh;
+  background-color: var(--cinza-fundo-pag);
 }
 
 .login-box {
-  background: var(--cinza-fundo);
+  background: var(--cinza-cartao);
   padding: 40px;
   border-radius: 12px;
-  border: 1px solid #333;
+  border: 1px solid var(--borda-suave);
   text-align: center;
   width: 100%;
   max-width: 380px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.login-box h2 {
-  color: var(--vermelho-china);
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.login-box p {
-  color: #aaa;
-  margin-bottom: 25px;
-}
+.login-box h2 { color: var(--vermelho-china); margin-bottom: 10px; }
+.login-box p { color: #888; margin-bottom: 25px; }
 
 .login-box input {
   width: 100%;
@@ -46,14 +84,7 @@
   background: var(--cinza-input);
   color: white;
   text-align: center;
-  font-size: 1.2rem;
-  transition: 0.3s;
-}
-
-.login-box input:focus {
-  outline: none;
-  border-color: var(--vermelho-china);
-  box-shadow: 0 0 8px rgba(183, 28, 28, 0.4);
+  font-size: 1.1rem;
 }
 
 .login-box button {
@@ -69,60 +100,22 @@
   transition: 0.2s;
 }
 
-.login-box button:hover {
-  background: #e0e0e0;
-  transform: scale(1.02);
-}
+.login-box button:hover { transform: scale(1.02); background: #eee; }
 
-.cadastro-container {
-  max-width: 650px;
-  margin: 3rem auto;
-  padding: 2.5rem;
-  background-color: var(--cinza-fundo);
-  border-radius: 12px;
-  border: 1px solid #333;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-}
-
-.header-painel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  border-bottom: 2px solid var(--vermelho-china);
-  padding-bottom: 1rem;
-}
-
-.header-painel h2 {
-  color: var(--branco-texto);
-  font-size: 1.6rem;
-  margin: 0;
-}
-
-.btn-sair {
-  background: transparent;
-  border: 1px solid var(--vermelho-china);
-  color: var(--vermelho-china);
-  padding: 6px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.btn-sair:hover {
-  background: var(--vermelho-china);
-  color: white;
-}
-
+/* --- FORMULÁRIO DE CADASTRO (Onde estava branco) --- */
 .form-cadastro {
+  background-color: var(--cinza-cartao);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid var(--borda-suave);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
 .form-cadastro label {
-  color: var(--dourado-luxo);
+  color: var(--dourado-luxo); /* Texto Amarelo */
   font-weight: bold;
   font-size: 0.95rem;
   margin-bottom: -5px;
@@ -133,11 +126,11 @@
 .form-cadastro textarea {
   padding: 14px;
   border-radius: 6px;
-  border: 1px solid #444;
-  background-color: var(--cinza-input);
+  border: 1px solid var(--borda-suave);
+  background-color: var(--cinza-input); /* Fundo Preto */
   color: white;
-  font-family: inherit;
   font-size: 1rem;
+  width: 100%;
   transition: border 0.3s;
 }
 
@@ -145,7 +138,7 @@
 .form-cadastro select:focus,
 .form-cadastro textarea:focus {
   outline: none;
-  border-color: var(--vermelho-china);
+  border-color: var(--dourado-luxo);
 }
 
 .linha-dupla {
@@ -153,91 +146,184 @@
   gap: 20px;
 }
 
-.linha-dupla .campo {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.campo { flex: 1; }
+
+/* Botão Salvar (Verde) */
+.btn-salvar {
+  margin-top: 1rem;
+  padding: 16px;
+  background-color: var(--verde-neon);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
 }
 
-.info-estoque {
-  display: flex;
-  justify-content: center;
-  margin: 5px 0 15px 0;
-  animation: fadeIn 0.5s ease;
-}
+.btn-salvar:hover { filter: brightness(0.9); }
 
-.badge-unico {
-  background-color: rgba(255, 77, 77, 0.15);
-  color: #ff6b6b;
-  padding: 8px 20px;
-  border-radius: 50px;
-  border: 1px solid #ff4d4d;
-  font-size: 0.9rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.badge-infinito {
-  background-color: rgba(0, 255, 136, 0.15);
-  color: var(--verde-neon);
-  padding: 8px 20px;
-  border-radius: 50px;
-  border: 1px solid var(--verde-neon);
-  font-size: 0.9rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
+/* Preview da Imagem */
 .preview-img {
   width: 100%;
   max-width: 200px;
   height: 200px;
   object-fit: contain;
   border-radius: 6px;
-  margin: 0 auto;
+  margin: 10px auto;
   border: 1px dashed #555;
   background: #000;
-  padding: 10px;
 }
 
-.btn-salvar {
-  margin-top: 1rem;
-  padding: 18px;
+/* --- TABELA DE PRODUTOS (DARK MODE) --- */
+.lista-produtos-admin { margin-top: 50px; }
+.lista-produtos-admin h3 { margin-bottom: 20px; color: #fff; }
+
+.tabela-scroll { overflow-x: auto; border-radius: 8px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--cinza-cartao); /* Fundo escuro da tabela */
+  overflow: hidden;
+}
+
+th, td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--borda-suave);
+  color: var(--branco-texto);
+}
+
+th {
+  background-color: #29292e;
+  font-weight: bold;
+  color: var(--dourado-luxo); /* Cabeçalho Amarelo */
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+tr:hover { background-color: #29292e; } /* Efeito ao passar o mouse na linha */
+
+.thumb-mini {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #444;
+}
+
+/* Botões da Tabela (Editar/Excluir) */
+.actions-cell { display: flex; gap: 10px; }
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: 0.2s;
+  color: #fff;
+}
+
+.edit { color: #4fa1ff; }
+.edit:hover { background-color: rgba(79, 161, 255, 0.1); }
+
+.trash { color: #ff4d4d; }
+.trash:hover { background-color: rgba(255, 77, 77, 0.1); }
+
+/* --- BOTÃO SAIR (Logout) --- */
+.btn-sair {
+  background: transparent;
+  border: 2px solid var(--vermelho-china);
+  color: var(--vermelho-china);
+  padding: 8px 25px;
+  border-radius: 50px; /* Redondo estilo 'Pill' */
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-sair:hover {
   background-color: var(--vermelho-china);
   color: white;
+  box-shadow: 0 0 15px rgba(183, 28, 28, 0.6); /* Brilho vermelho */
+  transform: translateY(-2px);
+}
+
+/* --- ÁREA DOS BOTÕES DE AÇÃO (Salvar/Editar) --- */
+.form-actions {
+  display: flex;
+  gap: 15px; /* Espaço entre os botões */
+  margin-top: 30px;
+}
+
+/* Botão Cadastrar (Verde - Mantendo o estilo) */
+.btn-salvar {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #04d361 0%, #039b48 100%);
+  color: #fff;
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  text-transform: uppercase;
   letter-spacing: 1px;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(4, 211, 97, 0.3);
 }
 
 .btn-salvar:hover {
-  background-color: var(--vermelho-escuro);
+  filter: brightness(1.1);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(183, 28, 28, 0.3);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Botão Atualizar (Azul Tech) */
+.btn-update {
+  flex: 2; /* Ocupa 2x mais espaço que o cancelar */
+  padding: 16px;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
 }
 
-@media (max-width: 600px) {
-  .linha-dupla {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  
-  .cadastro-container {
-    padding: 1.5rem;
-    margin: 1rem;
-  }
+.btn-update:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+}
+
+/* Botão Cancelar (Cinza/Discreto) */
+.btn-cancelar {
+  flex: 1; /* Menorzinho */
+  padding: 16px;
+  background: transparent;
+  border: 2px solid #555;
+  color: #ccc;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+.btn-cancelar:hover {
+  border-color: #fff;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
 }
