@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { ShoppingCart } from 'phosphor-react';
+import { useParams, useNavigate } from 'react-router-dom'; 
+import { ShoppingCart, ArrowLeft } from 'phosphor-react';
 import api from '../services/api';
 import { useCart } from '../context/CartContext';
 import './DetalhesProduto.css';
 
 const DetalhesProduto = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); 
   const [produto, setProduto] = useState(null);
   const { addToCart } = useCart();
 
@@ -26,6 +27,11 @@ const DetalhesProduto = () => {
 
   return (
     <div className="detalhes-container">
+      <button className="btn-voltar" onClick={() => navigate(-1)}>
+        <ArrowLeft size={24} weight="bold" />
+        Voltar para a Loja
+      </button>
+
       <div className="detalhes-grid">
         <div className="img-area-detalhe">
           <img src={produto.imagem} alt={produto.nome} />

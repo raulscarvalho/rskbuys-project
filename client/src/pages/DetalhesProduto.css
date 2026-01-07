@@ -5,6 +5,41 @@
   min-height: 60vh;
 }
 
+.btn-voltar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  background-color: var(--vermelho-china) !important;
+  color: white !important;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  line-height: 1;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.btn-voltar svg {
+  display: block;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.btn-voltar:hover {
+  filter: brightness(0.9);
+  transform: translateX(-5px);
+}
+
 .detalhes-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

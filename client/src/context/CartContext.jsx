@@ -7,7 +7,7 @@ export const CartProvider = ({ children }) => {
     const savedCart = localStorage.getItem('rsk-cart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
-
+  
   useEffect(() => {
     localStorage.setItem('rsk-cart', JSON.stringify(cartItems));
   }, [cartItems]);
